@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AzTU Bank | Onlayn Bankçılıq</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <nav class="navbar">
+    <div class="logo-area">
+    <img src="aztu.png.png" alt="Logo" class="nav-logo">
+    <h2>AzTU Bank</h2>
+</div>
+    <ul>
+        <li><a href="anasehife.html">Ana Səhifə</a></li>
+        <li><a href="kredit.html">Kreditlər</a></li>
+        <li><a href="kartlar.html">Kartlar</a></li>
+    </ul>
+</nav>
+    <header class="hero">
+        <h1>Gələcəyin Bankı: AzTU Bank</h1>
+        <p>Sürətli, təhlükəsiz və innovativ bank həlləri.</p>
+        <a href="qeydiyyat.html" style="text-decoration: none;">
+    <button class="btn">Hesab aç</button>
+</a>
+    </header>
+    <section class="services">
+        <div class="card"><h3>Pulsuz Kart</h3><p>0 AZN xidmət haqqı</p></div>
+        <div class="card"><h3>Sürətli Kredit</h3><p>Cəmi 5 dəqiqəyə</p></div>
+        <div class="card"><h3>Mobil Tətbiq</h3><p>7/24 nəzarət</p></div>
+    </section>
+    <section id="test-bolmesi" class="interactive-lab" style="padding: 50px 10%; background: #f4f7f6; border-top: 3px solid #003366;">
+    <h2 style="text-align: center; color: #003366; margin-bottom: 30px;">AzTU Bank İnteraktiv Panel</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+        
+        <div class="lab-card" style="background: white; padding: 20px; border-radius: 10px; shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <h3>1. Dinamik Salamlama</h3>
+            <button id="salamBtn" class="btn" style="background: #003366; color: white; padding: 10px; border: none; cursor: pointer;">Adını Daxil Et</button>
+            <p id="salamMesaj" style="margin-top: 10px; font-weight: bold;"></p>
+        </div>
+
+        <div class="lab-card" style="background: white; padding: 20px; border-radius: 10px;">
+            <h3>2. Mətn Analizi</h3>
+            <input type="text" id="analizInput" placeholder="Bura bir şeylər yaz..." style="width: 100%; padding: 8px; margin: 10px 0;">
+            <p id="saygac" style="color: #666;">Simvol sayı: 0</p>
+        </div>
+
+        <div class="lab-card" style="background: white; padding: 20px; border-radius: 10px;">
+            <h3>3. Fon Rəngini Dəyiş</h3>
+            <select id="rengSecici" style="width: 100%; padding: 8px;">
+                <option value="#f4f7f6">Default (Bozumtul)</option>
+                <option value="#e3f2fd">Açıq Mavi</option>
+                <option value="#f1f8e9">Açıq Yaşıl</option>
+                <option value="#fffde7">Sarımtıl</option>
+                <option value="#ffffff">Tam Ağ</option>
+            </select>
+        </div>
+
+        <div class="lab-card" style="background: white; padding: 20px; border-radius: 10px;">
+            <h3>4. Valyuta Məzənnələri</h3>
+            <button id="elaveEtBtn" class="btn" style="background: #28a745; color: white; padding: 10px; border: none; cursor: pointer;">Məzənnə Artır</button>
+            <ul id="valyutaSiyahisi" style="list-style: none; padding: 0; margin-top: 10px; max-height: 100px; overflow-y: auto;"></ul>
+        </div>
+
+        <div class="lab-card" style="background: white; padding: 20px; border-radius: 10px;">
+            <h3>5. Şifrə Validasiyası</h3>
+            <form id="sifreForm">
+                <input type="password" id="sifreInput" placeholder="Şifrəniz..." style="width: 70%; padding: 8px;">
+                <button type="submit" style="padding: 8px; background: #003366; color: white; border: none;">Yoxla</button>
+                <p id="sifreXeta" style="margin-top: 5px; font-size: 13px;"></p>
+            </form>
+        </div>
+
+    </div>
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    
+    const salamBtn = document.getElementById('salamBtn');
+    if(salamBtn) {
+        salamBtn.onclick = function() {
+            let ad = prompt("Adınız nədir?");
+            if(ad) {
+                document.getElementById('salamMesaj').innerText = "Xoş gəldiniz, " + ad + "!";
+            }
+        };
+    }
+    const analizInput = document.getElementById('analizInput');
+    if(analizInput) {
+        analizInput.oninput = function() {
+            document.getElementById('saygac').innerText = "Simvol sayı: " + this.value.length;
+        };
+    }
+    const rengSecici = document.getElementById('rengSecici');
+    const testBolmesi = document.getElementById('test-bolmesi');
+    if(rengSecici && testBolmesi) {
+        rengSecici.onchange = function() {
+            testBolmesi.style.backgroundColor = this.value;
+        };
+    }
+    const elaveEtBtn = document.getElementById('elaveEtBtn');
+    const vSiyahi = document.getElementById('valyutaSiyahisi');
+    const kurslar = ["USD: 1.7000 AZN", "EUR: 1.8450 AZN", "RUB: 0.0185 AZN", "TRY: 0.0520 AZN", "GBP: 2.1500 AZN"];
+
+    if(elaveEtBtn && vSiyahi) {
+        elaveEtBtn.onclick = function() {
+            let randomKurs = kurslar[Math.floor(Math.random() * kurslar.length)];
+            let li = document.createElement('li');
+            li.innerText = "💵 " + randomKurs;
+            li.style.borderBottom = "1px solid #eee";
+            li.style.padding = "5px 0";
+            vSiyahi.appendChild(li);
+        };
+    }
+    const sForm = document.getElementById('sifreForm');
+    const sInput = document.getElementById('sifreInput');
+    const xMesaj = document.getElementById('sifreXeta');
+
+    if(sForm) {
+        sForm.onsubmit = function(event) {
+            event.preventDefault();
+            if(sInput.value.length < 8) {
+                xMesaj.innerText = "❌ Minimum 8 simvol yazın!";
+                xMesaj.style.color = "red";
+                sInput.style.borderColor = "red";
+            } else {
+                xMesaj.innerText = "✅ Şifrə keçərlidir!";
+                xMesaj.style.color = "green";
+                sInput.style.borderColor = "green";
+            }
+        };
+    }
+});
+</script>
+</body>
+</html>
+<link rel="stylesheet" href="style.css">
